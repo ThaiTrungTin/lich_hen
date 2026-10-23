@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lịch của anh bị rách, anh xin em lịch hẹn nhé 😜</title>
+    <meta name="description" content="Lịch của anh bị rách, anh xin em lịch hẹn nhé! 😜💕">
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon cute icon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+</head>
+
+<body>
+
+    <!-- Background Floating Sakura & Hearts -->
+    <div class="bg-decorations" id="bg-decorations"></div>
+
+    <!-- Music toggle button -->
+    <button class="sound-toggle-btn" id="sound-toggle-btn" aria-label="Bật tắt nhạc nền">
+        <span class="music-icon">🎶</span> Nhạc đang phát
+    </button>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="app-wrapper">
+        <!-- ==============================================
+         MÀN 1: THIỆP MỜI HẸN HÒ (GIAO DIỆN CHÍNH)
+         ============================================== -->
+        <main class="invitation-card" id="invitation-view">
+
+            <!-- Cute Top Ribbon -->
+            <div class="ribbon-badge">
+                <span></span> LỜI RỦ ĐI CHƠI ĐẶC BIỆT CHO CÔ GÁI SIÊU CUTE <span></span>
+            </div>
+
+            <!-- Character Stage -->
+            <div class="characters-stage">
+                <!-- Speech bubble -->
+                <div class="speech-bubble" id="speech-bubble">
+                    Một buổi hẹn với anh nha
+                </div>
+
+                <!-- 8K Crisp Cute SVG Illustration: Cat & Monkey -->
+                <svg class="characters-svg" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <!-- Cat Fur Gradient -->
+                        <linearGradient id="catFur" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffb07c" />
+                            <stop offset="100%" stop-color="#f28e53" />
+                        </linearGradient>
+                        <!-- Monkey Fur Gradient -->
+                        <linearGradient id="monkeyFur" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#d49464" />
+                            <stop offset="100%" stop-color="#aa6938" />
+                        </linearGradient>
+                        <!-- Monkey Face Gradient -->
+                        <linearGradient id="monkeyFace" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe3cf" />
+                            <stop offset="100%" stop-color="#ffd0b5" />
+                        </linearGradient>
+                        <!-- Rose Red Gradient -->
+                        <linearGradient id="roseRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff4d79" />
+                            <stop offset="100%" stop-color="#d61c4e" />
+                        </linearGradient>
+                        <!-- Heart Glow Filter -->
+                        <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#ff4d79" flood-opacity="0.3" />
+                        </filter>
+                    </defs>
+
+                    <!-- Floating Mini Hearts between them -->
+                    <g class="stage-hearts">
+                        <path
+                            d="M 200,60 C 195,45 180,48 180,62 C 180,75 200,88 200,88 C 200,88 220,75 220,62 C 220,48 205,45 200,60 Z"
+                            fill="#ff4d79" opacity="0.85">
+                            <animateTransform attributeName="transform" type="translate" values="0,0; 0,-10; 0,0"
+                                dur="2s" repeatCount="indefinite" />
+                        </path>
+                        <path
+                            d="M 185,42 C 182,32 172,34 172,43 C 172,51 185,60 185,60 C 185,60 198,51 198,43 C 198,34 188,32 185,42 Z"
+                            fill="#ff758c" opacity="0.6">
+                            <animateTransform attributeName="transform" type="translate" values="0,0; 0,-8; 0,0"
+                                dur="2.4s" begin="0.5s" repeatCount="indefinite" />
+                        </path>
+                    </g>
+
+                    <!-- ================= MÈO ĐỰC (BÊN TRÁI) ================= -->
+                    <g id="male-cat" transform="translate(15, 10)">
+                        <!-- Cat Tail Wagging -->
+                        <path d="M 75,190 Q 40,200 45,155 Q 48,135 32,145" fill="none" stroke="#f28e53"
+                            stroke-width="14" stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate"
+                                values="0 75 190; 12 75 190; -8 75 190; 0 75 190" dur="2.5s" repeatCount="indefinite" />
+                        </path>
+
+                        <!-- Cat Body -->
+                        <ellipse cx="120" cy="180" rx="44" ry="40" fill="url(#catFur)" />
+                        <!-- Cat White Belly -->
+                        <ellipse cx="125" cy="185" rx="26" ry="28" fill="#fff7f2" />
+
+                        <!-- Cat Head -->
+                        <g>
+                            <ellipse cx="120" cy="115" rx="45" ry="38" fill="url(#catFur)" />
+
+                            <!-- Cat Ears -->
+                            <!-- Left Ear -->
+                            <polygon points="85,95 72,55 105,75" fill="#f28e53" />
+                            <polygon points="87,90 78,63 102,77" fill="#ffc2d1" />
+                            <!-- Right Ear -->
+                            <polygon points="140,75 168,55 155,95" fill="#f28e53" />
+                            <polygon points="142,77 162,63 153,90" fill="#ffc2d1" />
+
+                            <!-- Cat Face Details -->
+                            <!-- White muzzle -->
+                            <ellipse cx="120" cy="126" rx="22" ry="15" fill="#ffffff" />
+
+                            <!-- Cute Nose -->
+                            <polygon points="117,120 123,120 120,124" fill="#ff758c" />
+
+                            <!-- Cat Mouth (Happy smile) -->
+                            <path id="cat-mouth" d="M 114,127 Q 120,132 120,125 Q 120,132 126,127" fill="none"
+                                stroke="#4a2835" stroke-width="2.5" stroke-linecap="round" />
+
+                            <!-- Cat Eyes (Handsome & Big Sparkling) -->
+                            <g id="cat-eyes">
+                                <!-- Left Eye -->
+                                <ellipse cx="102" cy="110" rx="6.5" ry="8" fill="#3a2312" />
+                                <circle cx="100" cy="107" r="2.8" fill="#ffffff" />
+                                <circle cx="104" cy="113" r="1.2" fill="#ffffff" />
+                                <!-- Right Eye -->
+                                <ellipse cx="138" cy="110" rx="6.5" ry="8" fill="#3a2312" />
+                                <circle cx="136" cy="107" r="2.8" fill="#ffffff" />
+                                <circle cx="140" cy="113" r="1.2" fill="#ffffff" />
+                            </g>
+
+                            <!-- Cute Blushing Cheeks -->
+                            <ellipse cx="94" cy="122" rx="7" ry="4" fill="#ff8aa3" opacity="0.5" />
+                            <ellipse cx="146" cy="122" rx="7" ry="4" fill="#ff8aa3" opacity="0.5" />
+
+                            <!-- Whiskers -->
+                            <line x1="82" y1="122" x2="62" y2="118" stroke="#ffffff" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="82" y1="127" x2="60" y2="128" stroke="#ffffff" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="158" y1="122" x2="178" y2="118" stroke="#ffffff" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="158" y1="127" x2="180" y2="128" stroke="#ffffff" stroke-width="2"
+                                stroke-linecap="round" />
+
+                            <!-- Sweat drop when troll button is triggered (hidden initially) -->
+                            <path id="cat-sweat" d="M 160,82 Q 165,72 167,78 Q 169,85 163,86 Z" fill="#60a5fa"
+                                opacity="0" />
+                        </g>
+
+                        <!-- Gentleman Bow Tie -->
+                        <g transform="translate(120, 150)">
+                            <polygon points="-12,-6 -12,6 0,0" fill="#e11d48" />
+                            <polygon points="12,-6 12,6 0,0" fill="#e11d48" />
+                            <circle cx="0" cy="0" r="4.5" fill="#ffd166" />
+                        </g>
+
+                        <!-- Bouquet of Roses in Paws -->
+                        <g transform="translate(150, 155)">
+                            <!-- Flower stems -->
+                            <path d="M 0,15 L -10,35 M 5,15 L 0,38 M -5,15 L -15,36" stroke="#4ade80" stroke-width="3"
+                                stroke-linecap="round" />
+                            <!-- Bouquet wrap -->
+                            <polygon points="-18,22 12,18 2,42 -12,42" fill="#fde047" opacity="0.9" />
+                            <!-- Roses -->
+                            <circle cx="-6" cy="12" r="9" fill="url(#roseRed)" />
+                            <circle cx="6" cy="10" r="8" fill="#ff4d79" />
+                            <circle cx="0" cy="3" r="8.5" fill="#f43f68" />
+                            <circle cx="0" cy="3" r="3.5" fill="#ffd166" />
+                            <!-- Cat Right Paw holding bouquet -->
+                            <ellipse cx="-14" cy="22" rx="7" ry="6" fill="#fff7f2" />
+                        </g>
+
+                        <!-- Cat Left Paw -->
+                        <ellipse cx="88" cy="175" rx="8" ry="7" fill="#fff7f2" />
+                    </g>
+
+                    <!-- ================= BÉ KHỈ CÁI (BÊN PHẢI) ================= -->
+                    <g id="female-monkey" transform="translate(20, 10)">
+                        <!-- Monkey Curly Tail -->
+                        <path d="M 290,195 Q 330,195 325,160 Q 320,135 300,140 Q 290,143 294,155 Q 300,165 310,162"
+                            fill="none" stroke="#aa6938" stroke-width="8" stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate"
+                                values="0 290 195; -6 290 195; 8 290 195; 0 290 195" dur="3s"
+                                repeatCount="indefinite" />
+                        </path>
+
+                        <!-- Monkey Body -->
+                        <ellipse cx="265" cy="182" rx="38" ry="36" fill="url(#monkeyFur)" />
+                        <!-- Monkey Belly -->
+                        <ellipse cx="260" cy="186" rx="22" ry="24" fill="url(#monkeyFace)" />
+
+                        <!-- Monkey Big Round Ears -->
+                        <!-- Left Ear -->
+                        <circle cx="218" cy="115" r="18" fill="url(#monkeyFur)" />
+                        <circle cx="220" cy="115" r="11" fill="url(#monkeyFace)" />
+                        <!-- Right Ear -->
+                        <circle cx="310" cy="115" r="18" fill="url(#monkeyFur)" />
+                        <circle cx="308" cy="115" r="11" fill="url(#monkeyFace)" />
+
+                        <!-- Pink Flower / Ribbon Clip on Ear (Khỉ Nữ Tính) -->
+                        <g transform="translate(305, 96)">
+                            <circle cx="-5" cy="0" r="5" fill="#ff758c" />
+                            <circle cx="5" cy="0" r="5" fill="#ff758c" />
+                            <circle cx="0" cy="-5" r="5" fill="#ff758c" />
+                            <circle cx="0" cy="5" r="5" fill="#ff758c" />
+                            <circle cx="0" cy="0" r="3.5" fill="#fef08a" />
+                        </g>
+
+                        <!-- Monkey Head -->
+                        <ellipse cx="264" cy="118" rx="42" ry="36" fill="url(#monkeyFur)" />
+
+                        <!-- Monkey Heart-shaped Face Mask -->
+                        <g>
+                            <path
+                                d="M 264,136 C 240,142 232,130 232,118 C 232,104 246,98 258,104 C 264,107 264,107 270,104 C 282,98 296,104 296,118 C 296,130 288,142 264,136 Z"
+                                fill="url(#monkeyFace)" />
+
+                            <!-- Cute Anime Eyes (Shy & Kawaii) -->
+                            <g>
+                                <!-- Left Eye -->
+                                <ellipse cx="249" cy="116" rx="6" ry="7.5" fill="#2d150b" />
+                                <circle cx="247" cy="113" r="2.5" fill="#ffffff" />
+                                <circle cx="251" cy="119" r="1.1" fill="#ffffff" />
+                                <!-- Eyelashes -->
+                                <path d="M 243,110 Q 248,106 254,109" stroke="#2d150b" stroke-width="1.6" fill="none"
+                                    stroke-linecap="round" />
+
+                                <!-- Right Eye -->
+                                <ellipse cx="279" cy="116" rx="6" ry="7.5" fill="#2d150b" />
+                                <circle cx="277" cy="113" r="2.5" fill="#ffffff" />
+                                <circle cx="281" cy="119" r="1.1" fill="#ffffff" />
+                                <!-- Eyelashes -->
+                                <path d="M 273,109 Q 280,106 285,110" stroke="#2d150b" stroke-width="1.6" fill="none"
+                                    stroke-linecap="round" />
+                            </g>
+
+                            <!-- Cute Nose -->
+                            <ellipse cx="264" cy="126" rx="3.5" ry="2" fill="#aa6938" />
+
+                            <!-- Shy Sweet Smile -->
+                            <path d="M 258,131 Q 264,136 270,131" fill="none" stroke="#4a2835" stroke-width="2"
+                                stroke-linecap="round" />
+
+                            <!-- Rosy Cheeks -->
+                            <ellipse cx="240" cy="126" rx="7" ry="4" fill="#ff758c" opacity="0.6" />
+                            <ellipse cx="288" cy="126" rx="7" ry="4" fill="#ff758c" opacity="0.6" />
+                        </g>
+
+                        <!-- Monkey Cute Paws Clasping Shyly -->
+                        <ellipse cx="254" cy="165" rx="7" ry="6" fill="url(#monkeyFace)" />
+                        <ellipse cx="270" cy="165" rx="7" ry="6" fill="url(#monkeyFace)" />
+
+                        <!-- Holding a Tiny Strawberry Gift -->
+                        <g transform="translate(262, 163)">
+                            <polygon points="-4,-2 4,-2 0,6" fill="#f43f68" />
+                            <circle cx="-2" cy="-2" r="2.5" fill="#f43f68" />
+                            <circle cx="2" cy="-2" r="2.5" fill="#f43f68" />
+                            <polygon points="-1,-4 1,-4 0,-1" fill="#22c55e" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Main Invitation Header -->
+            <h1 class="title">
+                Lịch của anh bị rách, anh xin em <span class="highlight-name">lịch hẹn</span> nhé? 😜
+            </h1>
+
+            <!-- Description / Casual & Cute Proposal Message -->
+            <p class="subtitle">
+                Tối mai em có rảnh hơm, anh xin phép hẹn em một buổi nhé?
+            </p>
+
+            <!-- Troll hint text box -->
+            <div class="troll-hint-box">
+                <span class="troll-hint-text" id="troll-hint">Đố em bấm nút từ chối được đó! 😜</span>
+            </div>
+
+            <!-- Interactive Buttons Zone -->
+            <div class="button-zone">
+                <!-- Nút Đồng Ý (Duy nhất bấm được, to dần mỗi lần né) -->
+                <button class="btn-yes" id="btn-yes" type="button">
+                    <span>🥰</span>
+                    <span class="btn-yes-text">Đi lunn nè!</span>
+                </button>
+
+                <!-- Nút Không Đồng Ý (Nút troll chạy liên tục khi rê chuột hoặc bấm vào) -->
+                <button class="btn-no" id="btn-no" type="button">
+                    <span>😜</span>
+                    <span class="btn-no-text">Không đi đâu</span>
+                </button>
+            </div>
+
+            <!-- Footer Note -->
+            <div class="card-footer">
+                <span></span> Một buổi hẹn nhẹ nhàng cuối tuần <span></span>
+            </div>
+        </main>
+
+        <!-- ==============================================
+         MÀN 2: CHÚC MỪNG CHỐT KÈO ĐI CHƠI
+         (Hiển thị khi bấm "Đi lunn nè!")
+         ============================================== -->
+        <section class="invitation-card celebration-view" id="celebration-view">
+
+            <!-- Victory Ribbon -->
+            <div class="success-badge">
+                <span>🎉</span> CHỐT KÈO ĐI RỒI NHA! <span></span>
+            </div>
+
+            <!-- Happy Hugging Scene (Cute couple animation) -->
+            <div class="characters-stage" style="height: 200px;">
+                <svg class="characters-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="hugHeart" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff4d79" />
+                            <stop offset="100%" stop-color="#ff758c" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Massive Heart in Background -->
+                    <path
+                        d="M 200,65 C 170,10 110,25 110,85 C 110,135 200,185 200,185 C 200,185 290,135 290,85 C 290,25 230,10 200,65 Z"
+                        fill="url(#hugHeart)" opacity="0.3">
+                        <animateTransform attributeName="transform" type="scale" values="1; 1.06; 1" dur="1.2s"
+                            repeatCount="indefinite" transform-origin="200 100" />
+                    </path>
+
+                    <!-- Sparkling Stars -->
+                    <text x="80" y="60" font-size="24">✨</text>
+                    <text x="300" y="50" font-size="24">💖</text>
+                    <text x="60" y="160" font-size="22">🌸</text>
+                    <text x="320" y="150" font-size="22">🍓</text>
+
+                    <!-- Cute Cuddle Animation -->
+                    <g transform="translate(45, 15)">
+                        <!-- Character 1 Body & Head -->
+                        <ellipse cx="160" cy="150" rx="38" ry="35" fill="#f28e53" />
+                        <ellipse cx="145" cy="105" rx="35" ry="30" fill="#f28e53" />
+                        <polygon points="120,90 108,55 136,74" fill="#f28e53" />
+                        <polygon points="122,86 114,64 133,76" fill="#ffc2d1" />
+                        <path d="M 125,102 Q 132,95 139,102" stroke="#3a2312" stroke-width="3" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M 148,102 Q 155,95 162,102" stroke="#3a2312" stroke-width="3" fill="none"
+                            stroke-linecap="round" />
+                        <ellipse cx="123" cy="110" rx="6" ry="3.5" fill="#ff758c" opacity="0.7" />
+                        <path d="M 165,135 Q 195,145 205,130" stroke="#f28e53" stroke-width="14" stroke-linecap="round"
+                            fill="none" />
+                        <circle cx="205" cy="130" r="7" fill="#fff7f2" />
+
+                        <!-- Character 2 Body & Head -->
+                        <ellipse cx="205" cy="150" rx="36" ry="35" fill="#aa6938" />
+                        <ellipse cx="215" cy="105" rx="34" ry="30" fill="#aa6938" />
+                        <circle cx="252" cy="105" r="14" fill="#aa6938" />
+                        <circle cx="250" cy="105" r="8" fill="#ffd0b5" />
+                        <text x="242" y="94" font-size="16">🌸</text>
+                        <ellipse cx="205" cy="108" rx="22" ry="18" fill="#ffd0b5" />
+                        <path d="M 194,103 Q 200,97 206,103" stroke="#2d150b" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+                        <path d="M 213,103 Q 219,97 225,103" stroke="#2d150b" stroke-width="2.5" fill="none"
+                            stroke-linecap="round" />
+                        <ellipse cx="192" cy="112" rx="6" ry="3.5" fill="#ff758c" opacity="0.8" />
+                        <ellipse cx="228" cy="112" rx="6" ry="3.5" fill="#ff758c" opacity="0.8" />
+                        <path d="M 185,140 Q 155,148 145,135" stroke="#aa6938" stroke-width="12" stroke-linecap="round"
+                            fill="none" />
+                        <circle cx="145" cy="135" r="6" fill="#ffd0b5" />
+                    </g>
+                </svg>
+            </div>
+
+            <h2 class="success-title">Chốt Kèo Thành Công Rồi Nhé! 🎉</h2>
+
+            <!-- Message Box: Tự nhiên, vui vẻ, lịch sự -->
+            <div class="love-message-box">
+                <p class="love-quote">
+                    "Biết ngay là em sẽ đồng ý mà! "
+                </p>
+                <p class="love-details">
+                    Anh qua đón rồi mình đi nhé. Hẹn gặp em! 🌸
+                </p>
+                <div class="love-signature">
+                    <span class="cat-sign">Cuối tuần này </span>
+                    <span class="heart-sign"></span>
+                    <span class="monkey-sign">Anh qua đón nhé! 🛵</span>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <span>✨</span> Hẹn gặp em nha! <span>🌸</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- Toast Notification Message -->
+    <div class="toast-msg" id="toast-msg"></div>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
